@@ -1,4 +1,4 @@
-<h1>Social Media App<h1>
+Social Media App
 
 * Users Authentication
 * User Profiles --edit
