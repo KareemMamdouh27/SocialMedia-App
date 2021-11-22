@@ -7,6 +7,7 @@
 * Users Posts
 * Comments
 * Likes 
+* Multi language using ( Laravel Localiztion )
 
 ## Up Comming
 
