@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\commentController;
+use App\Http\Controllers\langController;
 use App\Http\Controllers\likesController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\profileController;
@@ -39,3 +40,5 @@ Route::post('/post/{id}/comment', [commentController::class, 'store']);
 Route::get('/post/{id}/comments', [postController::class , 'show'])->name('posts.show');
 Route::post('/post/{id}/comment', [commentController::class , 'store'])->name('comment.add');
 Route::post('/post/{id}/like', [likesController::class, 'store'])->name('post.like');
+Route::get('lang/home', [langController::class, 'index']);
+Route::get('lang/change', [langController::class, 'change'])->name('changeLang');

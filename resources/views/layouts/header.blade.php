@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
             @if (Auth::check())
                 <button type="button" class="btn btn-primary position-relative">
-                    <a class="text-light text-decoration-none" href="/profile/{{ Auth::user()->id }}">Profile</a>
+                    <a class="text-light text-decoration-none" href="/profile/{{ Auth::user()->id }}">{{ __('messages.profile') }}</a>
                   </button>
 
                 <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -17,14 +17,14 @@
 
                 <li class="nav-item dropdown text-right">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Settings
+                        {{ __('messages.settings') }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                            Logout
+                            {{ __('messages.logout') }}
                         </a>    
                         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -44,10 +44,26 @@
                 @csrf
             </form>
         </ul>
-        <form class="form-inline my-2 my-lg-0 align-self-center">
+        {{-- <form class="form-inline my-2 my-lg-0 align-self-center">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> --}}
 
-    </div>
+        <div class="btn-group">
+            <select class="form-control changeLang">
+                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>Arabic</option>
+            </select>
+            
+        </div>
   </nav>
+
+<script type="text/javascript">
+  
+    var url = "{{ route('changeLang') }}";
+  
+    $(".changeLang").change(function(){
+        window.location.href = url + "?lang="+ $(this).val();
+    });
+  
+</script>

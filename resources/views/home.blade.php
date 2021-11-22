@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
     <style>
             <style>
         body {
@@ -21,7 +21,6 @@
             color: #999;
         }
     </style>
-    </style>
 </head>
 <body>
     
@@ -32,7 +31,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('News Feed') }}</div>
+                <div class="card-header">{{ __('messages.news_feed') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -55,7 +54,7 @@
                                                 <button class="btn btn-success float-right" type="submit"> {{ $post->likes->count() }} <i class="bi bi-star-fill"></i></button>
                                             </form>
                                         </span>
-                                        <h2 class="h5 mb-0"> <strong>Post Created By: </strong>{{ $post->user->name }}</h2>
+                                        <h2 class="h5 mb-0"> <strong>{{ __('messages.post_created_by') }}: </strong>{{ $post->user->name }}</h2>
                                         <h3 class="h5 mb-0 small text-secondaty"><strong>Post Created At: </strong>{{ $post->created_at->format('Y-m-d') }} <strong>at: </strong> {{ $post->created_at->format('H:i:s') }}</h3>
                                         <h3 class="h5 mb-0 small text-secondary"> <strong>Post Title: </strong>{{ $post->title }}</h3><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i> </span>
                                         <p class="text-small mt-2 font-weight-light">{{ $post->body }}</p>
@@ -65,7 +64,7 @@
                                             <div class="input-group-append">
                                                 <form method="post" action="/post/{{ $post->id }}/comment">
                                                     @csrf
-                                                    <input type="submit" name="body" class="btn btn-primary float-left ml-1 mr-1" value="Comment">
+                                                    <input type="submit" name="body" class="btn btn-primary float-left ml-1 mr-1" value="{{ __('messages.comment') }}">
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}">
                                                     <a href="/post/{{ $post->id }}/comments" class="btn btn-dark mr-1">{{ $post->comments->count() }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
                                                         <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
@@ -98,7 +97,7 @@
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">{{ __('Users') }}</div>
+                <div class="card-header">{{ __('messages.users') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -112,7 +111,7 @@
                         <div class="card-body w-100">
                           <h5 class="card-title display-6 font-italic"><a href="profile/{{ $user->id }}">{{ $user->name }}</a></h5>
                           <p class="card-text">{{ $user->brief }}.</p>
-                          <a href="profile/{{ $user->id }}" class="btn btn-primary">Profile</a>
+                          <a href="profile/{{ $user->id }}" class="btn btn-primary">{{ __('messages.profile') }}</a>
                         </div>
 
                         <hr class="mt-3 mb-3"/>
